@@ -5,6 +5,12 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    @item = Item.new
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @items }
+    end
   end
 
   # GET /items/1
