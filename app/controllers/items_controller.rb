@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @items }
+      format.xml  { render xml: @items }
     end
   end
 
@@ -30,15 +30,17 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        flash[:notice] = 'Item was successfully created.'
+        format.js
+        format.html { redirect_to(@item) }
+        format.xml  { render xml: @item, status: :created, location: @item }
       else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.xml  { render xml: @item.errors, status: :unprocessable_entity }
       end
     end
   end

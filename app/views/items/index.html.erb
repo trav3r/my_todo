@@ -20,7 +20,7 @@
   </tbody>
 </table>
 
-<% form_for @item, :html => {'data-remote' => true} do |f| %>
+<%= form_for @item, :html => {'data-remote' => true} do |f| %>
   <%= f.text_field :description %>
   <%= f.submit "Add Item!" %>
 <% end %>

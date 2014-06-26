@@ -1,0 +1,2 @@
+$('#items').append('<%= escape_javascript(render partial: "item", locals: { item: @item }) %>');
+$('#item_description').attr('value', '').focus();
