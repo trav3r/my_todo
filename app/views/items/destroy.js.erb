@@ -1,0 +1,4 @@
+$('.items').hide('ajax:success', function() {  
+        $(this).closest('tr');
+});  
+$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
